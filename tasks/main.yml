@@ -1,0 +1,13 @@
+---
+# tasks file for asg1612.comun
+
+
+- name: incluimos tareas cuando sea redhat
+  include_tasks: 
+    file: redhat.yml
+  when: ansible_distribution == "RedHat"
+  
+- name: incluimos tareas cuando sea Ubuntu
+  include_tasks: 
+    file: redhat.yml
+  when: ansible_distribution == "Ubuntu"

@@ -1,0 +1,23 @@
+---
+- name: Configuramos el repositorio
+  get_url:
+    url: {{url}}
+    dest: /etc/yum.repos.d/
+    mode: '0644'
+    validate_certs: no
+
+- name: install mariadb
+  yum:
+    name: ["mysql"]
+    state: present
+    disable_gpg_check: yes
+    update_cache: yes
+
+- name: Ensure Mariadb is running
+  ansible.builtin.systemd:
+    service: mysql
+    state: started
+    # name: mariadb
+    # daemon_reexec: yes
+    # state: started
+    daemon_reload: yes

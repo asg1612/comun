@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include asg1612.comun"
+      include_role:
+        name: "asg1612.comun"
